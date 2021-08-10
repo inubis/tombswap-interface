@@ -9,6 +9,13 @@ export const AMPL = new Token(
   'AMPL',
   'Ampleforth'
 )
+export const INUBIS = new Token(
+  SupportedChainId.MAINNET,
+  '0xAB917b34B57F1C01c5DF8DdC0F75828E3914FCe6',
+  9,
+  'INUBIS',
+  'Inubis'
+)
 export const DAI = new Token(
   SupportedChainId.MAINNET,
   '0x6B175474E89094C44Da98b954EedeAC495271d0F',
