@@ -67,7 +67,7 @@ const StyledMenuButton = styled.button`
 
 const UNIbutton = styled(ButtonPrimary)`
   background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
+  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #9101f6 100%), #edeef2;
   border: none;
 `
 
@@ -177,7 +177,7 @@ const ToggleMenuItem = styled.button`
   }
 `
 
-const CODE_LINK = 'https://github.com/Uniswap/uniswap-interface'
+const CODE_LINK = 'https://github.com/inubis/tombswap-interface'
 
 function LanguageMenuItem({ locale, active, key }: { locale: SupportedLocale; active: boolean; key: string }) {
   const { to, onClick } = useLocationLinkProps(locale)
@@ -242,17 +242,11 @@ export default function Menu() {
             default:
               return (
                 <MenuFlyout>
-                  <MenuItem href="https://uniswap.org/">
+                  <MenuItem href="https://inubis.io/">
                     <div>
                       <Trans>About</Trans>
                     </div>
                     <Info opacity={0.6} size={16} />
-                  </MenuItem>
-                  <MenuItem href="https://docs.uniswap.org/">
-                    <div>
-                      <Trans>Docs</Trans>
-                    </div>
-                    <BookOpen opacity={0.6} size={16} />
                   </MenuItem>
                   <MenuItem href={CODE_LINK}>
                     <div>
@@ -260,17 +254,11 @@ export default function Menu() {
                     </div>
                     <Code opacity={0.6} size={16} />
                   </MenuItem>
-                  <MenuItem href="https://discord.gg/FCfyBSbCU5">
+                  <MenuItem href="https://discord.com/invite/y5TdB28H">
                     <div>
                       <Trans>Discord</Trans>
                     </div>
                     <MessageCircle opacity={0.6} size={16} />
-                  </MenuItem>
-                  <MenuItem href={infoLink}>
-                    <div>
-                      <Trans>Analytics</Trans>
-                    </div>
-                    <PieChart opacity={0.6} size={16} />
                   </MenuItem>
                   <ToggleMenuItem onClick={() => setMenu('lang')}>
                     <div>
@@ -278,21 +266,6 @@ export default function Menu() {
                     </div>
                     <ChevronRight size={16} opacity={0.6} />
                   </ToggleMenuItem>
-                  <ToggleMenuItem onClick={() => toggleDarkMode()}>
-                    <div>{darkMode ? <Trans>Light Theme</Trans> : <Trans>Dark Theme</Trans>}</div>
-                    {darkMode ? <Moon opacity={0.6} size={16} /> : <Sun opacity={0.6} size={16} />}
-                  </ToggleMenuItem>
-                  {showUNIClaimOption && (
-                    <UNIbutton
-                      onClick={openClaimModal}
-                      padding="8px 16px"
-                      width="100%"
-                      $borderRadius="12px"
-                      mt="0.5rem"
-                    >
-                      <Trans>Claim UNI</Trans>
-                    </UNIbutton>
-                  )}
                 </MenuFlyout>
               )
           }

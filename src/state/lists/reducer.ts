@@ -75,9 +75,11 @@ export default createReducer(initialState, (builder) =>
         }
       } else {
         // activate if on default active
+        /*
         if (DEFAULT_ACTIVE_LIST_URLS.includes(url)) {
           state.activeListUrls?.push(url)
-        }
+      }
+      */
 
         state.byUrl[url] = {
           ...state.byUrl[url],

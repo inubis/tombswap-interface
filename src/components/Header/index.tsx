@@ -11,8 +11,8 @@ import { useUserHasSubmittedClaim } from 'state/transactions/hooks'
 import { useDarkModeManager } from 'state/user/hooks'
 import { useETHBalances } from 'state/wallet/hooks'
 import styled from 'styled-components/macro'
-import Logo from '../../assets/svg/logo.svg'
-import LogoDark from '../../assets/svg/logo_white.svg'
+import Logo from '../../assets/svg/logo.png'
+import LogoDark from '../../assets/svg/logo_tomb.png'
 import { useActiveWeb3React } from '../../hooks/web3'
 import { ExternalLink, TYPE } from '../../theme'
 import ClaimModal from '../claim/ClaimModal'
@@ -85,7 +85,7 @@ const HeaderElement = styled.div`
 const HeaderLinks = styled(Row)`
   justify-self: center;
   background-color: ${({ theme }) => theme.bg0};
-  width: fit-content;
+  width: 480px;
   padding: 4px;
   border-radius: 16px;
   display: grid;
@@ -94,7 +94,7 @@ const HeaderLinks = styled(Row)`
   overflow: auto;
   align-items: center;
   ${({ theme }) => theme.mediaWidth.upToLarge`
-    justify-self: start;  
+    justify-self: start;
     `};
   ${({ theme }) => theme.mediaWidth.upToMedium`
     justify-self: center;
@@ -135,7 +135,7 @@ const UNIAmount = styled(AccountElement)`
   height: 36px;
   font-weight: 500;
   background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
+  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #9101f6 100%), #edeef2;
 `
 
 const UNIWrapper = styled.span`
@@ -185,9 +185,11 @@ const StyledNavLink = styled(NavLink).attrs({
   activeClassName,
 })`
   ${({ theme }) => theme.flexRowNoWrap}
-  align-items: left;
+  align-items: center;
+  justify-content: center;
   border-radius: 3rem;
   outline: none;
+  width: 228px;
   cursor: pointer;
   text-decoration: none;
   color: ${({ theme }) => theme.text2};
@@ -265,7 +267,7 @@ export default function Header() {
       </Modal>
       <Title href=".">
         <UniIcon>
-          <img width={'24px'} src={darkMode ? LogoDark : Logo} alt="logo" />
+          <img width={'255px'} src={darkMode ? LogoDark : Logo} alt="logo" />
         </UniIcon>
       </Title>
       <HeaderLinks>
@@ -285,36 +287,17 @@ export default function Header() {
         >
           <Trans>Pool</Trans>
         </StyledNavLink>
-        {chainId && chainId === SupportedChainId.MAINNET && (
-          <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
-            <Trans>Vote</Trans>
-          </StyledNavLink>
-        )}
+        {/*
         <StyledExternalLink id={`stake-nav-link`} href={infoLink}>
           <Trans>Charts</Trans>
           <sup>↗</sup>
         </StyledExternalLink>
+        */}
       </HeaderLinks>
 
       <HeaderControls>
         <NetworkCard />
         <HeaderElement>
-          {availableClaim && !showClaimPopup && (
-            <UNIWrapper onClick={toggleClaimModal}>
-              <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
-                <TYPE.white padding="0 2px">
-                  {claimTxn && !claimTxn?.receipt ? (
-                    <Dots>
-                      <Trans>Claiming UNI</Trans>
-                    </Dots>
-                  ) : (
-                    <Trans>Claim UNI</Trans>
-                  )}
-                </TYPE.white>
-              </UNIAmount>
-              <CardNoise />
-            </UNIWrapper>
-          )}
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>

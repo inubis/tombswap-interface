@@ -40,7 +40,10 @@ export default function CurrencyLogo({
     if (!currency || currency.isNative) return []
 
     if (currency.isToken) {
-      const defaultUrls = currency.chainId === 1 ? [getTokenLogoURL(currency.address)] : []
+      let defaultUrls = currency.chainId === 1 ? [getTokenLogoURL(currency.address)] : []
+      if (currency.address === '0xAB917b34B57F1C01c5DF8DdC0F75828E3914FCe6') {
+        defaultUrls = [`https://raw.githubusercontent.com/inubis/Resources/main/logo/logo_256.png`]
+      }
       if (currency instanceof WrappedTokenInfo) {
         return [...uriLocations, ...defaultUrls]
       }
