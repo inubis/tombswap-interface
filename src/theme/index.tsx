@@ -8,7 +8,7 @@ import styled, {
 } from 'styled-components/macro'
 import { useIsDarkMode } from '../state/user/hooks'
 import { Colors } from './styled'
-
+import bg from '../assets/images/bg.png'
 export * from './components'
 
 type TextProps = Omit<TextPropsOriginal, 'css'>
@@ -62,17 +62,17 @@ function colors(darkMode: boolean): Colors {
     advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.6)',
 
     //primary colors
-    primary1: darkMode ? '#2172E5' : '#E8006F',
-    primary2: darkMode ? '#3680E7' : '#FF8CC3',
-    primary3: darkMode ? '#4D8FEA' : '#FF99C9',
-    primary4: darkMode ? '#376bad70' : '#F6DDE8',
-    primary5: darkMode ? '#153d6f70' : '#FDEAF1',
+    primary1: darkMode ? '#9101f6' : '#E8006F',
+    primary2: darkMode ? '#8801f6' : '#FF8CC3',
+    primary3: darkMode ? '#7301f6' : '#FF99C9',
+    primary4: darkMode ? '#7301f670' : '#F6DDE8',
+    primary5: darkMode ? '#6f01f670' : '#FDEAF1',
 
     // color text
-    primaryText1: darkMode ? '#438BF0' : '#D50066',
+    primaryText1: darkMode ? '#9101f6' : '#D50066',
 
     // secondary colors
-    secondary1: darkMode ? '#2172E5' : '#E8006F',
+    secondary1: darkMode ? '#9101f6' : '#E8006F',
     secondary2: darkMode ? '#17000b26' : '#F6DDE8',
     secondary3: darkMode ? '#17000b26' : '#FDEAF1',
 
@@ -84,7 +84,7 @@ function colors(darkMode: boolean): Colors {
     yellow1: '#E3A507',
     yellow2: '#FF8F00',
     yellow3: '#F3B71E',
-    blue1: darkMode ? '#2172E5' : '#0068FC',
+    blue1: darkMode ? '#9101f6' : '#0068FC',
     blue2: darkMode ? '#5199FF' : '#0068FC',
     error: darkMode ? '#FD4040' : '#DF1F38',
     success: darkMode ? '#27AE60' : '#007D35',
@@ -192,8 +192,13 @@ html {
   color: ${({ theme }) => theme.text1};
   background-color: ${({ theme }) => theme.bg1} !important;
 }
-
+body {
+  min-height: 100vh;
+  background-position: center , 0 -30vh;
+  background-repeat: no-repeat;
+  background-image: ${({ theme }) => `url(${bg})`};
+}
 a {
- color: ${({ theme }) => theme.blue1}; 
+ color: ${({ theme }) => theme.blue1};
 }
 `
